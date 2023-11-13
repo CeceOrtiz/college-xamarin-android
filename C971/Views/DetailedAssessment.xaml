@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C971.Views.DetailedAssessment">
+    <ContentPage.Content>
+        <StackLayout x:Name="DetailedAssessmentStackLayout" Spacing="0">
+
+            <!--Header Grid-->
+            <Grid Padding="5" RowSpacing="1" ColumnSpacing="1" BackgroundColor="#003057">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="wgu_logo.png" Grid.Row="0" Grid.Column="0" HeightRequest="60" 
+                       WidthRequest="60"/>
+                <Label Grid.Row="0" Grid.Column="1" FontSize="Large" TextColor="White" 
+                       VerticalTextAlignment="Center" Padding="30, 0, 0, 0">Assessment Details</Label>
+            </Grid>
+
+            <!--Assessment Info Grid-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" 
+                       Text="Course ID:"/>
+                <Label Grid.Row="0" Grid.Column="1" FontSize="Medium" VerticalTextAlignment="Center" 
+                       Text="{Binding CourseID}" x:Name="CourseID"/>
+
+                <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" 
+                       Text="Assessment ID:"/>
+                <Label Grid.Row="1" Grid.Column="1" FontSize="Medium" VerticalTextAlignment="Center" 
+                       Text="{Binding AssessmentID}" x:Name="AssessmentID"/>
+
+                <Label Grid.Row="2" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" 
+                       Text="Assessment Name:"/>
+                <Entry Grid.Row="2" Grid.Column="1" VerticalTextAlignment="Center" 
+                       Text="{Binding AssessmentName}" x:Name="AssessmentName"/>
+
+                <Label Grid.Row="3" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" 
+                       Text="Start Date:"/>
+                <DatePicker Grid.Row="3" Grid.Column="1" x:Name="AssessmentStartPicker" 
+                            Date="{Binding AssessmentStart}"/><!--Source: https://learn.microsoft.com/en-us/dotnet/api/Xamarin.Forms.DatePicker?view=xamarin-forms-->
+
+                <Label Grid.Row="4" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" 
+                       Text="End Date:"/>
+                <DatePicker Grid.Row="4" Grid.Column="1" x:Name="AssessmentEndPicker" 
+                            Date="{Binding AssessmentEnd}"/><!--Source: https://learn.microsoft.com/en-us/dotnet/api/Xamarin.Forms.DatePicker?view=xamarin-forms-->
+
+                <Label Grid.Row="5" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center"
+                       Text="Notifications?"/>
+                <Switch Grid.Row="5" Grid.Column="1" x:Name="AssessmentNotifs" IsToggled="False"/>
+
+                <Label Grid.Row="6" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" 
+                       Text="Assessment Type:"/>
+                <Picker Grid.Row="6" Grid.Column="1" Title="Select the assessment type" 
+                        x:Name="AssessmentType"><!--Source: https://learn.microsoft.com/en-us/dotnet/api/Xamarin.Forms.Picker?view=xamarin-forms-->
+                    <Picker.ItemsSource><!--Source: https://learn.microsoft.com/en-us/dotnet/api/Xamarin.Forms.Picker?view=xamarin-forms-->
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Objective</x:String>
+                            <x:String>Performance</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+
+                <Button Grid.Row="7" Grid.Column="0" Text="Save" WidthRequest="100" 
+                        x:Name="SaveButton" Clicked="SaveButton_Clicked"/>
+                <Button Grid.Row="7" Grid.Column="1" Text="Return to Course" WidthRequest="100" 
+                        x:Name="ReturnButton" Clicked="ReturnButton_Clicked"/>
+
+            </Grid>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

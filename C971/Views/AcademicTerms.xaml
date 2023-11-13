@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C971.Views.AcademicTerms">
+    <ContentPage.Content>
+        <StackLayout x:Name="TermsStackLayout" Spacing="0">
+
+            <!--Header Grid-->
+            <Grid Padding="5" RowSpacing="1" ColumnSpacing="1" BackgroundColor="#003057">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="wgu_logo.png" Grid.Row="0" Grid.Column="0" HeightRequest="60" 
+                       WidthRequest="60"/>
+                <Label Grid.Row="0" Grid.Column="1" FontSize="Large" TextColor="White" 
+                       VerticalTextAlignment="Center" Padding="30, 0, 0, 0">Academic Terms</Label>
+            </Grid>
+
+            <!--Add Term Grid-->
+            <Grid Padding="5" RowSpacing="1" BackgroundColor="WhiteSmoke">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Button x:Name="AddTerm" Text="Add Term" WidthRequest="100" HorizontalOptions="Start"
+                        Clicked="AddTerm_Clicked"/>
+            </Grid>
+
+            <!--Separator Line-->
+            <BoxView HeightRequest="1" Color="DarkGray"/>
+
+            <!--Terms Grid-->
+            <CollectionView x:Name="TermsCV" ItemsSource="{Binding Terms}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Grid Padding="5" RowSpacing="1" ColumnSpacing="1" BackgroundColor="WhiteSmoke">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" 
+                               Text="Term ID"/>
+                            <Entry Grid.Row="0" Grid.Column="1"  Text="{Binding TermID}" x:Name="TermID" 
+                                   Placeholder="Enter Term ID" VerticalTextAlignment="Center" IsEnabled="False"/>
+
+                            <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" 
+                               Text="Term Name"/>
+                            <Entry Grid.Row="1" Grid.Column="1"  Text="{Binding TermName}" x:Name="TermName" 
+                                   Placeholder="Enter Term Name" VerticalTextAlignment="Center"/>
+
+                            <Label Grid.Row="2" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" 
+                               Text="Start Date"/>
+                            <DatePicker Grid.Row="2" Grid.Column="1" x:Name="TermStartPicker" 
+                                        Date="{Binding TermStart}"/><!--Source: https://learn.microsoft.com/en-us/dotnet/api/Xamarin.Forms.DatePicker?view=xamarin-forms-->
+
+                            <Label Grid.Row="3" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" 
+                               Text="End Date"/>
+                            <DatePicker Grid.Row="3" Grid.Column="1" x:Name="TermEndPicker"
+                                        Date="{Binding TermEnd}"/><!--Source: https://learn.microsoft.com/en-us/dotnet/api/Xamarin.Forms.DatePicker?view=xamarin-forms-->
+
+                            <Button Grid.Row="4" Grid.Column="0" x:Name="TermDetails" Text="Term Details"
+                                    Clicked="TermDetails_Clicked"/>
+                            <Button Grid.Row="4" Grid.Column="1" x:Name="SaveTerm" Text="Save Term"
+                                    Clicked="SaveTerm_Clicked"/>
+                            <Button Grid.Row="4" Grid.Column="2" x:Name="DeleteTerm" Text="Delete Term"
+                                    Clicked="DeleteTerm_Clicked"/>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
